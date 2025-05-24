@@ -1,0 +1,55 @@
+/* Centrer le contenu */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: rgb(175, 250, 175);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+  }
+  
+  /* Conteneur principal */
+  main {
+    text-align: center;
+    background-color: rgb(76, 122, 87);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    width: 40%;
+  }
+  
+  /* Image */
+  main img {
+    margin: 0 auto 1rem;
+  }
+  
+  /* les boutons */
+  .divConteneur a {
+    display: flex;
+    text-decoration: none;
+    background-color:rgb(191, 221, 191)/*rgb(51, 146, 51 #3498db */;
+    color: rgb(51, 146, 51);                     ;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 0.5rem;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  
+  .divConteneur a:hover {
+    background-color: #e5f3eb;
+  }
+  /* inérer l'image dans un cercle */
+  .cercle{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
