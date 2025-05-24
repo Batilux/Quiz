@@ -1,0 +1,42 @@
+
+body{
+    background-color: rgb(175, 250, 175);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+main{
+    background-color:rgb(153, 196, 166);
+    margin-top: 1rem;
+    padding:  2rem;
+    box-shadow: 0 5px 10px rgb(115, 161, 115);
+    width: 70%;
+    height: 60vh;
+    max-width: 500px;
+}
+.question{
+    display: flex;
+    align-items: stretch;
+    margin-top: 1rem;
+}
+.green{
+    color: rgb(1, 85, 1);
+}
+.dark{
+    color: black;
+}
+.banniere{
+    text-align: center;
+    font-family: Arial, "Helvetica Neue", sans-serif;
+    font-weight: bold;    
+    font-size: 20px;    
+}
+
+h3{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.ask{
+    margin-left: 0.2rem;
+}

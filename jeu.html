@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="jeu.css"/>
+  <title>Quiz</title>
+</head>
+<body>
+  <form>
+    <div>
+      <img src="image/green.png" />
+      <h3 id="ask">One, two, go!!</h3>
+    </div>
+
+    <div class="propositions">
+      <p class="Q">Quel est le plus grand océan ?</p>
+      <span class="proposition">Atlantique</span>
+      <span class="proposition">Arctique</span>
+      <span class="proposition">Pacifique</span>
+      <input type="radio" name="Q1" id="proposition10" value="A" class="btn" />
+      <input type="radio" name="Q1" id="proposition11" value="B" class="btn" />
+      <input type="radio" name="Q1" id="proposition12" value="C" class="btn" />
+    </div>
+
+    <div class="propositions">
+      <p class="Q">Combien de continents ?</p>
+      <span class="proposition">4</span>
+      <span class="proposition">6</span>
+      <span class="proposition">7</span>
+      <input type="radio" name="Q2" id="proposition20" value="4" class="btn" />
+      <input type="radio" name="Q2" id="proposition21" value="6" class="btn" />
+      <input type="radio" name="Q2" id="proposition22" value="7" class="btn" />
+    </div>
+  </form>
+
+  <script>
+    const ask = document.getElementById("ask");
+    const propositions = document.querySelectorAll(".propositions"); // tableau des div(2 div ici)
+    const Q = document.querySelectorAll(".Q"); // tableau des p (paragraphes non affihés contenant les questions)
+    const propositions1 = propositions[0].querySelectorAll("span"); //tableau des span(réponses possibles) de la question 1
+    const propositions2 = propositions[1].querySelectorAll("span"); //tableau des span de la deuxième question
+    let current = 0;
+
+    // Cachons tous les blocs propositions sauf le premier
+    for (let i = 1; i < propositions.length; i++) {
+      propositions[i].style.display = "none";
+    }
+
+    // fonction pour remplir le champ de question de façon animée: lettre par lettre 
+    function taperLettre(text, index) {
+      if (index < text.length) {
+        ask.innerHTML += text.charAt(index);
+        setTimeout(() => {
+          taperLettre(text, index + 1);
+        }, 40); 
+      }
+    }
+
+    // fonction qui envoie la question suivante après que le joueur ait donné une réponse à la question courante
+    function suivant() {
+      propositions[current].style.display = "none";
+      current++;
+      if (current < propositions.length) {
+        let text = Q[current].innerHTML;
+        ask.innerHTML = "";
+        taperLettre(text, 0);
+        setTimeout(() => {
+          propositions[current].style.display = "flex";
+        }, 800);
+      } else {
+        ask.textContent = "Quiz terminé !";
+      }
+    }
+    // Ajout d'un gestionnaire de clic des choix possibles de la question 1 
+    for (let i = 0; i < propositions1.length; i++) {
+      propositions1[i].addEventListener("click", () => {
+        document.getElementById("proposition1" + i).checked = true;
+        setTimeout(suivant, 700);
+      });
+    }
+    //gestionnaire de clic des choix de la question 2
+    for (let i=0; i<propositions2.length; i++){
+      propositions2[i].addEventListener("click", ()=>{
+        document.getElementById("proposition2" + i).checked=true;
+        setTimeout(suivant,700);
+      })
+    }
+
+    // Démarrage automatique avec effet machine à écrire
+    document.addEventListener("DOMContentLoaded", () => {
+      ask.textContent = "";
+      taperLettre(Q[0].textContent, 0);
+    });
+  </script>
+</body>
+</html>
