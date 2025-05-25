@@ -62,8 +62,8 @@
       propositions[current].style.display = "none";
       current++;
       if (current < propositions.length) {
-        let text = Q[current].innerHTML;
-        ask.innerHTML = "";
+        let text = Q[current].innerText;
+        ask.textContent = "";
         taperLettre(text, 0);
         setTimeout(() => {
           propositions[current].style.display = "flex";
